@@ -9,61 +9,59 @@
         --slate-grey : #708090;
     */
 
+        font-family: Roboto, Helvetica, Arial, sans-serif, 'Hack Nerd Font Mono', '3270 Nerd Font Propo';
+        font-weight: normal;
         border: none;
         border-radius: 0px;
-        font-weight: bold;
-        font-size: 14px;
-        min-height: 22px;
+        font-size: 12px;
+        min-height: 32px;
         margin-left: 2px;
         margin-right: 2px;
     }
 
     window#waybar {
-        background: #AECCE6;
         /*Uncomment the below item to add a border.*/
-        /*border: 1px solid #9DCBD7;*/
-        border-radius: 5px;
+        border-radius: 12px;
+        color: #4A4A4A;
+        background-color: rgba(255, 255, 227, .3);
     }
 
-    #workspaces button {
+    .modules-left {
+        background-color: rgba(45, 45, 45, .8);
+        margin: 3px;
+        border-radius: 12px 0 0 12px;
+        color: #ffffff;
+    }
+
+    .modules-right {
+        background-color: rgba(45, 45, 45, .8);
+        margin: 3px;
+        border-radius:  0 12px 12px 0;
+        color: #ffffff;
+    }
+
+    #custom-appmenu {
         box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
-        margin-right: 0px;
-        margin-left: 0px;
-        padding-right: 10px;
-        padding-left: 10px;
-        color: #242639;
-    }
-
-    #workspaces button.active {
-        background: #AECCE6;
-        color: #242639;
-        margin-right: 0px;
-        margin-left: 0px;
+        text-shadow: none;
         padding-right: 4px;
-        padding-left: 4px;
+        padding-left: 12px;
     }
 
-    #workspaces button:hover {
-        background: transparent;
-        color: #242639;
+    #taskbar {
+        /* background-color: #000; */
     }
 
     #taskbar button {
         box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
+        text-shadow: none;
         margin-right: 0px;
         margin-left: 0px;
         padding-right: 4px;
         padding-left: 4px;
-        color: #242639;
     }
 
     #taskbar button.active {
         background: transparent;
-        color: #242639;
         margin-right: 0px;
         margin-left: 0px;
         padding-right: 4px;
@@ -71,115 +69,84 @@
     }
 
     #taskbar button:hover {
-        /*Colors are reverted. Although the BG may not work everywhere*/
         background: #242639;
         color: #AECCE6;
     }
 
-    #clock {
+    #window {
+        padding-right: 20px;
+    }
+
+    #workspaces button {
         box-shadow: none;
-            text-shadow: none;
+        text-shadow: none;
         padding: 0px;
-        border-radius: 5px;
-        margin-top: 3px;
-        margin-right: 6px;
-        margin-left: 6px;
-        padding-right: 3px;
-        padding-left: 3px;
+        margin-right: 2px;
+        margin-left: 2px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        padding-right: 15px;
+        padding-left: 10px;
+        background-color: #CBCBCB;
+        color: #4a4a4a;
+        opacity: 1;
+    }
+
+    #workspaces button.active {
+        background: #6D8196;
         color: #242639;
+        padding-right: 2px;
+        padding-left: 2px;
     }
 
-    #cpu {
-        box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
-        border-radius: 5px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        padding-right: 4px;
-        padding-left: 4px;
+    #workspaces button:hover {
+        background: #6D8196;
         color: #242639;
-    }
-
-    #network {
-        box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
-        border-radius: 5px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        padding-right: 4px;
-        padding-left: 4px;
-        color: #242639;
-    }
-
-    #taskbar {
-        padding: 0px;
-    }
-
-    #custom-appmenu {
-        /*
-        This is for the module app menu.
-        */
-        box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
-        border-radius: 5px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        margin-right: 1px;
-        margin-left: 1px;
-        padding-right: 4px;
-        padding-left: 4px;
-        color: #242639;
-    }
-
-    #pulseaudio {
-        box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
-        border-radius: 5px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        padding-right: 12px;
-        padding-left: 4px;
-        color: #242639;
-    }
-
-    #memory {
-        box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
-        border-radius: 5px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        padding-right: 4px;
-        padding-left: 4px;
-        color: #242639;
-    }
-
-    #disk {
-        box-shadow: none;
-             text-shadow: none;
-         padding: 0px;
-         border-radius: 5px;
-         margin-top: 3px;
-         margin-bottom: 3px;
-         padding-right: 4px;
-         padding-left: 4px;
-         color: #242639;
     }
 
     #tray {
-        box-shadow: none;
-            text-shadow: none;
-        padding: 0px;
-        border-radius: 5px;
-        margin-top: 3px;
-        margin-bottom: 3px;
+        padding-right: 4px;
+        padding-left: 20px;
+    }
+
+    #battery {
         padding-right: 4px;
         padding-left: 4px;
-        color: #242639;
+    }
+
+    #cpu {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+    #network {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+    #memory {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+    #disk {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+
+    #pulseaudio {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+    #bluetooth {
+        padding: 0 4px;
+    }
+
+    #clock {
+        padding-right: 4px;
+        padding-left: 4px;
     }
 
     #user {
