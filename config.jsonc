@@ -6,12 +6,12 @@
     "margin-right": 20,
     "modules-left": ["custom/appmenu", "wlr/taskbar", "sway/window"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["tray", "battery", "cpu","memory", "pulseaudio", "bluetooth", "clock"],
+    "modules-right": ["tray", "battery", "cpu","memory", "pulseaudio", "network", "bluetooth", "clock"],
     "sway/window": {
         "max-length": 15
     },
     "battery": {
-        "format": "Bat: {capacity}%",
+        "format": ": {capacity}%",
         "format-icons": ["", "", "", "", ""]
     },
     "custom/appmenu": {
@@ -31,48 +31,55 @@
         "sort-by-app-id": true
     },
     "sway/workspaces": {
-        "format": "{windows} {icon}",
-        "all-outputs": true,
+        "format": "{icon}",
+        "all-outputs": false,
         "disable-scroll": true,
         "disable-auto-back-and-forth": true,
         "format-icons": {
-            "11": "A",
-            "12": "B",
-            "13": "C",
-            "14": "D",
-            "15": "E",
-            "high-priority-named": [ "11", "12" ],
-            "urgent": "",
-            "focused": "→",
-            "default": ""
-	    }
+            "11": "",
+            "12": "󰊯",
+            "13": "󰨞",
+            "14": "",
+            "15": "",
+            "persistent-workspaces": {
+                "13": [] // Always show a workspace with name '3', on all outputs if it does not exists
+
+            },
+            "urgent": "󰀨",
+            "focused": "󰽏",
+            "default": ""
+	    },
+        "sort-by-name": false,
+        "sort-by-number": true
     },
     "cpu": {
-        "format": "Cpu: {usage}%" ,
+        "format": ": {usage}%" ,
         "tooltip": true
     },
     "memory": {
         "interval": 5,
-        "format": "Mem: {}%",
+        "format": "  {}%",
         "max-length": 15
     },
     "network": {
+        "format": "󰛳",
+        "format-wifi": "",
         "tooltip": true,
         "rotate": 0,
         "format-ethernet": "<span foreground='#242639'> {bandwidthDownBytes}</span>",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "",
         "tooltip-format-disconnected": "Disconnected",
-        "format-alt": " Up: {bandwidthUpBytes}",
+        "format-alt": " Up: {bandwidthUpBytes} {essid}",
         "interval": 2
     },
     "tray": {
-        "icon-size": 21,
+        "icon-size": 20,
         "spacing": 10
     },
     "pulseaudio": {
-        "format": "Vol: {volume}%",
-        "format-bluetooth": "Vol: {volume}%",
+        "format": "󰜟  {volume}%",
+        "format-bluetooth": "󱄡  {volume}%",
         "format-muted": " : x",
         "format-icons": {
             "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
