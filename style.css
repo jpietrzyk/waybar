@@ -20,7 +20,7 @@
         min-height: 20px;
         border-radius: 9px;
         color: #4A4A4A;
-        background-color: rgba(255, 255, 227, .3);
+        background-color: rgba(255, 255, 227, .5);
     }
 
     .modules-left {
@@ -39,7 +39,7 @@
         color: #ffffff;
         font-weight: 600;
         font-size: 15px;
-        min-width: 450px;
+        min-width: 400px;
     }
 
     .modules-center {
@@ -84,55 +84,83 @@
     window#waybar #window {
         font-size: 13px;
         font-weight: bold;
-        margin: 6px 0;
+        margin: 9px 0;
         color: #cbc9d6;
-        background-color: rgba(51, 67, 82, 0.1);
-        border-radius: 6px;
+        background-color: rgba(202, 79, 79, 0.2);
+        border-radius: 3px;
         padding: 3px 9px;
-        border: 3px solid rgba(206, 173, 173, 0.1);
+        border: 2px solid rgba(206, 173, 173, 0.1);
+        min-width: 100px;
     }
 
     #workspaces button {
         box-shadow: none;
         text-shadow: none;
-        margin-right: 2px;
-        margin-left: 2px;
+        margin-right: 4px;
+        margin-left: 4px;
         padding: 3px 0;
-        background-color: #CBCBCB;
-        color: #4a4a4a;
+        background-color: rgba(253, 251, 212, .6);
+        color: #000080;
         min-width: 56px;
         opacity: 1;
         font-size: 16px;
+        border-radius: 3px;
     }
 
-    #workspaces button.active {
-        background: #6D8196;
-        color: #161827;
+    #workspaces button.foccused {
+        color: #5a7c3b;
+        background: rgb(150, 28, 28);
+    }
+
+    #workspaces button.persistent {
+        background-color: #ffffff;
+        color: #0e2755;
+    }
+
+    /* this is when it is active ;) */
+    #workspaces button.visible {
+        background-color: rgba(253, 251, 212, .9);
+        color: #0000ff;
+    }
+
+    /* #workspaces button.focused {
+        background: #4A90E2;
+        color: #ffffff;
+    } */
+
+    #workspaces button.urgent {
+        background: #DF373A;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    #workspaces button.empty {
+        background: #A9A9A9;
+        color: #242639;
     }
 
     #workspaces button:hover {
-        background: #6D8196;
-        color: #242639;
+        background: rgba(189, 185, 106, .8);
+        color: #fdfdb4;
     }
 
     #tray {
         padding-right: 12px;
-        padding-left: 20px;
+        padding-left: 12px;
+        margin-right: 18px;
     }
 
-    #battery {
-        padding-right: 8px;
-        padding-left: 4px;
-    }
 
     #cpu {
-        padding-right: 8px;
+        padding-right: 4px;
         padding-left: 4px;
+        margin-right: 6px;
     }
 
     #memory {
         padding-right: 4px;
         padding-left: 4px;
+        margin-right: 6px;
     }
 
     #disk {
@@ -141,7 +169,13 @@
     }
 
     #pulseaudio {
-        padding-right: 18px;
+        padding-right: 4px;
+        padding-left: 4px;
+        margin-right: 18px;
+    }
+
+    #battery {
+        padding-right: 4px;
         padding-left: 4px;
     }
 

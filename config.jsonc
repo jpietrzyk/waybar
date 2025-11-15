@@ -8,20 +8,16 @@
   "modules-center": ["sway/workspaces"],
   "modules-right": [
     "tray",
-    "battery",
     "cpu",
     "memory",
     "pulseaudio",
+    "battery",
     "network",
     "bluetooth",
     "clock"
   ],
   "sway/window": {
     "max-length": 15
-  },
-  "battery": {
-    "format": ": {capacity}%",
-    "format-icons": ["", "", "", "", ""]
   },
   "custom/appmenu": {
     "format": "",
@@ -40,30 +36,36 @@
     "sort-by-app-id": true
   },
   "sway/workspaces": {
-    "format": "{icon}",
+    "format": "{icon} #{name}",
     "all-outputs": false,
     "disable-scroll": true,
     "disable-auto-back-and-forth": true,
+    "sort-by-name": false,
+    "sort-by-number": true,
+    // do not change the names below, they correspond to workspace numbers
+    "high-priority-named": ["1", "2", "3", "4", "5"],
     "format-icons": {
-      "11": "",
-      "12": "󰊯",
-      "13": "󰨞",
-      "14": "",
-      "15": "",
-      "persistent-workspaces": {
-        "11": [],
-        "12": [],
-        "13": [] // Always show a workspace with name '3', on all outputs if it does not exists
-      },
+      "1": "",
+      "2": "",
+      "3": "󰨞",
+      "4": "",
+      "5": "",
       "urgent": "󰀨",
-      "focused": "󰽏",
+      // "focused": "󰽏",
       "default": ""
     },
-    "sort-by-name": false,
-    "sort-by-number": true
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": []
+    }
+  },
+  "battery": {
+    "format": "{icon}",
+    "format-icons": ["󰂃", "󰁻", "󰁿", "󰂁", "󰁹"]
   },
   "cpu": {
-    "format": ": {usage}%",
+    "format": " {usage}%",
     "tooltip": true
   },
   "memory": {
@@ -88,7 +90,7 @@
     "spacing": 10
   },
   "pulseaudio": {
-    "format": "󰜟 {volume}%",
+    "format": " {volume}%",
     "format-bluetooth": "󱄡 {volume}%",
     "format-muted": " : x",
     "format-icons": {
@@ -120,7 +122,7 @@
     "tooltip-format": "{}"
   },
   "clock": {
-    "format": "{:%I:%M %p}",
+    "format": "{:%H:%M}",
     "rotate": 0,
     "format-alt": "{  %d·%m·%y}",
     "tooltip-format": "<span>{calendar}</span>",
