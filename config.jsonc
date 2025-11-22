@@ -4,10 +4,11 @@
   "margin-top": 15,
   "margin-left": 20,
   "margin-right": 20,
-  "modules-left": ["custom/appmenu", "wlr/taskbar", "sway/window"],
+  "modules-left": ["custom/appmenu", "sway/mode", "wlr/taskbar", "sway/window"],
   "modules-center": ["sway/workspaces"],
   "modules-right": [
     "tray",
+    "custom/scratchpad-indicator",
     "cpu",
     "memory",
     "pulseaudio",
@@ -16,6 +17,9 @@
     "bluetooth",
     "clock"
   ],
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
   "sway/window": {
     "max-length": 15
   },
@@ -41,23 +45,25 @@
     "disable-scroll": true,
     "disable-auto-back-and-forth": true,
     "sort-by-name": false,
-    "sort-by-number": true,
+    "sort-by-number": false,
+    "sort-by-id": true,
+    "disable-scroll-wraparound": true,
     // do not change the names below, they correspond to workspace numbers
-    "high-priority-named": ["1", "2", "3", "4", "5"],
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "󰨞",
-      "4": "",
-      "5": "",
+      // "high-priority-named": ["1:1", "1:5"],
+      "1:1": "",
+      "1:2": "",
+      "1:3": "󰨞",
+      "1:4": "",
+      "1:5": "",
+      "1:6": "",
+      "1:7": "",
       "urgent": "󰀨",
-      // "focused": "󰽏",
-      "default": ""
+      "default": "󰣆"
     },
     "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": []
+      "1:1": [],
+      "1:5": []
     }
   },
   "battery": {
@@ -89,10 +95,19 @@
     "icon-size": 20,
     "spacing": 10
   },
+  "custom/scratchpad-indicator": {
+    "format-text": "{}hi",
+    "return-type": "json",
+    "interval": 3,
+    "exec": "~/.local/bin/scratchpad-indicator 2> /dev/null",
+    "exec-if": "exit 0",
+    "on-click": "swaymsg 'scratchpad show'",
+    "on-click-right": "swaymsg 'move scratchpad'"
+  },
   "pulseaudio": {
     "format": " {volume}%",
-    "format-bluetooth": "󱄡 {volume}%",
-    "format-muted": " : x",
+    "format-bluetooth": "󰂰 {volume}%",
+    "format-muted": " {volume}%",
     "format-icons": {
       "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
       "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
@@ -103,7 +118,7 @@
       "phone-muted": "",
       "portable": "",
       "car": "",
-      "default": ["", ""]
+      "default": ["", ""]
     },
     "scroll-step": 1,
     "on-click": "pavucontrol",

@@ -54,6 +54,10 @@
         font-size: 20px;
         font-weight: bold;
     }
+    #mode {
+        color: #cc3436;
+        font-weight: bold;
+    }
 
     #taskbar {
         margin-right: 36px;
@@ -173,10 +177,25 @@
         padding-left: 4px;
         margin-right: 18px;
     }
+    #pulseaudio.muted {
+        color: #cc3436;
+    }
 
     #battery {
         padding-right: 4px;
         padding-left: 4px;
+    }
+
+    #battery.charging {
+        color: #2dcc36;
+    }
+
+    #battery.warning:not(.charging) {
+        color: #e6e600;
+    }
+
+    #battery.critical:not(.charging) {
+        color: #cc3436;
     }
 
     #network {
