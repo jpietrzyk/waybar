@@ -1,182 +1,210 @@
 {
-    "layer": "top",
-    "position": "top",
-    "margin-top": 15,
-    "margin-left": 20,
-    "margin-right": 20,
-    "modules-left": ["custom/appmenu", "wlr/taskbar", "sway/window"],
-    "modules-center": ["sway/workspaces"],
-    "modules-right": ["tray", "battery", "cpu","memory", "pulseaudio", "network", "bluetooth", "clock"],
-    "sway/window": {
-        "max-length": 15
+  "layer": "top",
+  "position": "top",
+  "margin-top": 15,
+  "margin-left": 20,
+  "margin-right": 20,
+  "modules-left": ["custom/appmenu", "sway/mode", "wlr/taskbar", "sway/window"],
+  "modules-center": ["sway/workspaces"],
+  "modules-right": [
+    "tray",
+    "custom/scratchpad-indicator",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "battery",
+    "network",
+    "bluetooth",
+    "clock"
+  ],
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "sway/window": {
+    "max-length": 15
+  },
+  "custom/appmenu": {
+    "format": "",
+    "format-icon": "",
+    "rotate": 0,
+    "on-click": "~/.config/waybar/run_launcher.sh"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "format-icon": "󰌧",
+    "tooltip": true,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "active-first": false,
+    "sort-by-app-id": true
+  },
+  "sway/workspaces": {
+    "format": "{icon} #{name}",
+    "all-outputs": false,
+    "disable-scroll": true,
+    "disable-auto-back-and-forth": true,
+    "sort-by-name": false,
+    "sort-by-number": false,
+    "sort-by-id": true,
+    "disable-scroll-wraparound": true,
+    // do not change the names below, they correspond to workspace numbers
+    "format-icons": {
+      // "high-priority-named": ["1:1", "1:5"],
+      "1:1": "",
+      "1:2": "",
+      "1:3": "󰨞",
+      "1:4": "",
+      "1:5": "",
+      "1:6": "",
+      "1:7": "",
+      "urgent": "󰀨",
+      "default": "󰣆"
     },
-    "battery": {
-        "format": ": {capacity}%",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "custom/appmenu": {
-        "format": "",
-        "format-icon":"",
-        "rotate": 0,
-        "on-click": "~/.config/waybar/run_launcher.sh"
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "format-icon": "󰌧",
-        "tooltip": true,
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "active-first": false,
-        "sort-by-app-id": true
-    },
-    "sway/workspaces": {
-        "format": "{icon}",
-        "all-outputs": false,
-        "disable-scroll": true,
-        "disable-auto-back-and-forth": true,
-        "format-icons": {
-            "11": "",
-            "12": "󰊯",
-            "13": "󰨞",
-            "14": "",
-            "15": "",
-            "persistent-workspaces": {
-                "13": [] // Always show a workspace with name '3', on all outputs if it does not exists
-
-            },
-            "urgent": "󰀨",
-            "focused": "󰽏",
-            "default": ""
-	    },
-        "sort-by-name": false,
-        "sort-by-number": true
-    },
-    "cpu": {
-        "format": ": {usage}%" ,
-        "tooltip": true
-    },
-    "memory": {
-        "interval": 5,
-        "format": "  {}%",
-        "max-length": 15
-    },
-    "network": {
-        "format": "󰛳",
-        "format-wifi": "",
-        "tooltip": true,
-        "rotate": 0,
-        "format-ethernet": "<span foreground='#242639'> {bandwidthDownBytes}</span>",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "",
-        "tooltip-format-disconnected": "Disconnected",
-        "format-alt": " Up: {bandwidthUpBytes} {essid}",
-        "interval": 2
-    },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 10
-    },
-    "pulseaudio": {
-        "format": "󰜟  {volume}%",
-        "format-bluetooth": "󱄡  {volume}%",
-        "format-muted": " : x",
-        "format-icons": {
-            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "phone-muted": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "scroll-step": 1,
-        "on-click": "pavucontrol",
-        "ignored-sinks": ["Easy Effects Sink"]
-	},
-    "bluetooth": {
-        "format": "{icon}",
-        "format-connected": "{icon} {device_alias}",
-        "format-connected-battery": "󰥈 {device_battery_percentage}% {device_alias}",
-        "min-length":3,
-        "max-length": 10,
-        "format-icons": {
-            "enabled": "󰂯",
-            "disabled": "󰂲"
-        },
-        "tooltip-format": "{}"
-    },
-    "clock": {
-        "format": "{:%I:%M %p}",
-        "rotate": 0,
-        "format-alt": "{  %d·%m·%y}",
-        "tooltip-format": "<span>{calendar}</span>",
-        "calendar": {
-            "mode": "month",
-            "format": {
-                "months": "<span color='#ff6699'><b>{}</b></span>",
-                "days": "<span color='#cdd6f4'><b>{}</b></span>",
-                "weekdays": "<span color='#7CD37C'><b>{}</b></span>",
-                "today": "<span color='#ffcc66'><b>{}</b></span>"
-            }
-        }
-    },
-    // A grouped module for all session buttons, like logout, shutdown, etc.
-	// Commands used are Hyprland specific. Check and replace commands for other desktops.
-    "group/group-power": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": false
-        },
-        "modules": [
-            // With "user" as the first icon, only this will be shown in normal cases.
-            // For other items like shutdown, quit, etc., hover over this user item.
-            // Those will be revealed. This is the purpose of grouped items.
-            "user",
-            "custom/shutdown",
-            // "custom/quit",
-            // "custom/lock",
-            "custom/reboot"
-        ]
-    },
-    "custom/quit": {
-        "format": "󰗼",
-        "tooltip-format": "Exit",
-        "on-click": "hyprctl dispatch exit"
-    },
-    "custom/lock": {
-        "format": "󰍁",
-        "tooltip-format": "Lock",
-        // Hyprlock is a lock tool for Hyprland. For this to work, a configuration file is needed.
-        // The location is ~/.config/hypr/hyprlock.conf
-        // Without this, the lock won't work.
-        "on-click": "hyprlock"
-    },
-    "custom/reboot": {
-        "format": "󰜉",
-        "tooltip-format": "Reboot",
-        "on-click": "reboot"
-    },
-    "custom/shutdown": {
-        "format": "⏻",
-        "tooltip-format": "Shutdown",
-        "on-click": "shutdown now"
-    },
-    "disk": {
-        "interval": 30,
-        "format": " {used}",
-        "unit": "GB",
-        "tooltip-format": " {percentage_used}%"
-    },
-    "user": {
-        "format": "{user}", //Prints the user name.
-        "height": 20,
-        "width": 20,
-        "icon": true
+    "persistent_workspaces": {
+      "1:1": [],
+      "1:5": ["HDMI-A-1"],
+      "1:6": ["HDMI-A-1"]
     }
+  },
+  "battery": {
+    "format": "{icon}",
+    "format-icons": ["󰂃", "󰁻", "󰁿", "󰂁", "󰁹"]
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": true
+  },
+  "memory": {
+    "interval": 5,
+    "format": " {}%",
+    "max-length": 15
+  },
+  "network": {
+    "format": "󰛳",
+    "format-wifi": "",
+    "tooltip": true,
+    "rotate": 0,
+    "format-ethernet": "<span foreground='#242639'> {bandwidthDownBytes}</span>",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "",
+    "tooltip-format-disconnected": "Disconnected",
+    "format-alt": " Up: {bandwidthUpBytes} {essid}",
+    "interval": 2
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+  "custom/scratchpad-indicator": {
+    "format-text": "{}hi",
+    "return-type": "json",
+    "interval": 3,
+    "exec": "~/.local/bin/scratchpad-indicator 2> /dev/null",
+    "exec-if": "exit 0",
+    "on-click": "swaymsg 'scratchpad show'",
+    "on-click-right": "swaymsg 'move scratchpad'"
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-bluetooth": "󰂰 {volume}%",
+    "format-muted": " {volume}%",
+    "format-icons": {
+      "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+      "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+  },
+  "bluetooth": {
+    "format": "{icon}",
+    "format-connected": "{icon} {device_alias}",
+    "format-connected-battery": "󰥈 {device_battery_percentage}% {device_alias}",
+    "min-length": 3,
+    "max-length": 10,
+    "format-icons": {
+      "enabled": "󰂯",
+      "disabled": "󰂲"
+    },
+    "tooltip-format": "{}"
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "rotate": 0,
+    "format-alt": "{  %d·%m·%y}",
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "months": "<span color='#ff6699'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weekdays": "<span color='#7CD37C'><b>{}</b></span>",
+        "today": "<span color='#ffcc66'><b>{}</b></span>"
+      }
+    }
+  },
+  // A grouped module for all session buttons, like logout, shutdown, etc.
+  // Commands used are Hyprland specific. Check and replace commands for other desktops.
+  "group/group-power": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      // With "user" as the first icon, only this will be shown in normal cases.
+      // For other items like shutdown, quit, etc., hover over this user item.
+      // Those will be revealed. This is the purpose of grouped items.
+      "user",
+      "custom/shutdown",
+      // "custom/quit",
+      // "custom/lock",
+      "custom/reboot"
+    ]
+  },
+  "custom/quit": {
+    "format": "󰗼",
+    "tooltip-format": "Exit",
+    "on-click": "hyprctl dispatch exit"
+  },
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip-format": "Lock",
+    // Hyprlock is a lock tool for Hyprland. For this to work, a configuration file is needed.
+    // The location is ~/.config/hypr/hyprlock.conf
+    // Without this, the lock won't work.
+    "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+    "format": "󰜉",
+    "tooltip-format": "Reboot",
+    "on-click": "reboot"
+  },
+  "custom/shutdown": {
+    "format": "⏻",
+    "tooltip-format": "Shutdown",
+    "on-click": "shutdown now"
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {used}",
+    "unit": "GB",
+    "tooltip-format": " {percentage_used}%"
+  },
+  "user": {
+    "format": "{user}", //Prints the user name.
+    "height": 20,
+    "width": 20,
+    "icon": true
+  }
 }
